@@ -1,15 +1,33 @@
-# Datos de precios de Bitcoin
-bitcoin_prices = [50000.12, 51000.23, 51500.45, 52000.67, 52500.78]
+import requests
 
-# Nombre del archivo de salida
-output_file = 'tabla.txt'
+def get_bitcoin_price():
+    try:
+        # Solicita al usuario la cantidad de Bitcoins que posee
+        n = float(input("Ingrese la cantidad de Bitcoins que posee: "))
+        
+        # Consulta la API de CoinDesk para obtener el precio actual de Bitcoin en USD
+        response = requests.get("https://api.coindesk.com/v1/bpi/currentprice.json")
+        data = response.json()
+        price_usd = data["bpi"]["USD"]["rate_float"]
 
-# Abre el archivo para escritura
-with open(output_file, 'w') as file:
-    file.write("Fecha\tPrecio (USD)\n")  # Encabezado
+        # Calcula el costo actual en USD de los Bitcoins que posee el usuario
+        cost_usd = n * price_usd
 
-    # Escribe los datos en el archivo con el formato adecuado
-    for i, price in enumerate(bitcoin_prices, start=1):
-        file.write(f"2023-10-18\t{price:.2f}\n")  # Cambia la fecha por la fecha real
+        # Muestra el costo actual con cuatro decimales y usando "," como separador de miles
+        print(f"El costo actual de {n} Bitcoins en USD es: ${cost_usd:,.4f}")
+        
+        # Abre un archivo para escritura y guarda el resultado en el archivo txt
+        with open('tabla.txt', 'w') as file:
+            file.write(f"Precio (USD): {cost_usd:,.4f}")
 
-print(f"Los datos se han almacenado en {output_file}")
+    except ValueError:
+        print("Ingrese un valor válido para la cantidad de Bitcoins.")
+    except requests.RequestException:
+        print("Error al obtener los datos de CoinDesk.")
+
+if __name__ == "__main__":
+    get_bitcoin_price()
+
+
+
+
