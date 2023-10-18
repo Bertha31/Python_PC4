@@ -1,1 +1,0 @@
-Precio (USD): <function get_cost_usd at 0x7fb91f94a680>

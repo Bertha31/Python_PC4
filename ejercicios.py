@@ -14,9 +14,9 @@ if __name__ == "__main__":
     if cost_usd is not None:
         print(f"Cost in USD: ${cost_usd:.4f}")
 
-with open('tabla.txt', 'w') as file:
-    # Escribe el precio en el archivo
-    file.write(f"Precio (USD): {get_cost_usd}")
+        with open('tabla.txt', 'w') as file:
+            # Escribe el precio en el archivo
+            file.write(f"Precio (USD): {cost_usd}")
 
-# Informa al usuario que los datos se han almacenado
-print("Los datos se han almacenado en 'tabla.txt'")
+        # Informa al usuario que los datos se han almacenado
+        print("Los datos se han almacenado en 'tabla.txt'")
