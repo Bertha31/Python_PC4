@@ -1,13 +1,19 @@
+import os  # Importa el módulo os para trabajar con rutas de archivos
+
 # Función para guardar la tabla de multiplicar en un archivo
 def guardar_tabla_multiplicar(numero):
-    with open(f'tabla-{numero}.txt', 'w') as file:
+    # Define la ruta completa del archivo
+    archivo = os.path.join("/workspaces/Python_PC4/Ejercicio5", f'tabla-{numero}.txt')
+    with open(archivo, 'w') as file:
         for i in range(1, 11):
             file.write(f'{numero} x {i} = {numero * i}\n')
 
 # Función para leer y mostrar una tabla de multiplicar
 def mostrar_tabla(numero):
     try:
-        with open(f'tabla-{numero}.txt', 'r') as file:
+        # Define la ruta completa del archivo
+        archivo = os.path.join("/workspaces/Python_PC4/Ejercicio5", f'tabla-{numero}.txt')
+        with open(archivo, 'r') as file:
             for line in file:
                 print(line, end='')
     except FileNotFoundError:
@@ -16,7 +22,9 @@ def mostrar_tabla(numero):
 # Función para mostrar una línea específica de una tabla de multiplicar
 def mostrar_linea_tabla(numero, linea):
     try:
-        with open(f'tabla-{numero}.txt', 'r') as file:
+        # Define la ruta completa del archivo
+        archivo = os.path.join("/workspaces/Python_PC4/Ejercicio5", f'tabla-{numero}.txt')
+        with open(archivo, 'r') as file:
             lines = file.readlines()
             if linea <= len(lines):
                 print(lines[linea - 1], end='')
@@ -39,7 +47,7 @@ while True:
         numero = int(input("Ingrese un número entre 1 y 10: "))
         if 1 <= numero <= 10:
             guardar_tabla_multiplicar(numero)
-            print(f"Tabla de multiplicar de {numero} guardada en tabla-{numero}.txt")
+            print(f"Tabla de multiplicar de {numero} guardada en /workspaces/Python_PC4/Ejercicio5/tabla-{numero}.txt")
         else:
             print("El número debe estar entre 1 y 10.")
     elif opcion == "2":
@@ -59,3 +67,4 @@ while True:
         break
     else:
         print("Opción no válida. Por favor, seleccione una opción válida (1/2/3/4).")
+

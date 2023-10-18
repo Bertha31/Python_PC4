@@ -17,7 +17,8 @@ def get_bitcoin_price():
         print(f"El costo actual de {n} Bitcoins en USD es: ${cost_usd:,.4f}")
         
         # Abre un archivo para escritura y guarda el resultado en el archivo txt
-        with open('tabla.txt', 'w') as file:
+        file_path = "/workspaces/Python_PC4/Ejercicio4/tabla.txt"
+        with open(file_path, 'w') as file:
             file.write(f"Precio (USD): {cost_usd:,.4f}")
 
     except ValueError:
