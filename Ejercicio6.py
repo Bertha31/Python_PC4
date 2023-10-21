@@ -11,9 +11,8 @@ def contar_lineas_codigo(archivo_path):
         dentro_del_comentario = False
 
         for linea in lineas:
-            linea = linea.strip()  # Eliminar espacios en blanco al inicio y al final
+            linea = linea.strip()  
             if linea.startswith("#"):
-                # Ignorar líneas de comentarios
                 continue
             if linea and not dentro_del_comentario:
                 lineas_de_codigo += 1

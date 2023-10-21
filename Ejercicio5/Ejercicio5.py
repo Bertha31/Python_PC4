@@ -1,6 +1,5 @@
-import os  # Importa el módulo os para trabajar con rutas de archivos
+import os  
 
-# Función para guardar la tabla de multiplicar en un archivo
 def guardar_tabla_multiplicar(numero):
     # Define la ruta completa del archivo
     archivo = os.path.join("/workspaces/Python_PC4/Ejercicio5", f'tabla-{numero}.txt')
@@ -8,7 +7,6 @@ def guardar_tabla_multiplicar(numero):
         for i in range(1, 11):
             file.write(f'{numero} x {i} = {numero * i}\n')
 
-# Función para leer y mostrar una tabla de multiplicar
 def mostrar_tabla(numero):
     try:
         # Define la ruta completa del archivo
@@ -19,10 +17,8 @@ def mostrar_tabla(numero):
     except FileNotFoundError:
         print(f"El archivo tabla-{numero}.txt no existe.")
 
-# Función para mostrar una línea específica de una tabla de multiplicar
 def mostrar_linea_tabla(numero, linea):
     try:
-        # Define la ruta completa del archivo
         archivo = os.path.join("/workspaces/Python_PC4/Ejercicio5", f'tabla-{numero}.txt')
         with open(archivo, 'r') as file:
             lines = file.readlines()
@@ -66,5 +62,5 @@ while True:
     elif opcion == "4":
         break
     else:
-        print("Opción no válida. Por favor, seleccione una opción válida (1/2/3/4).")
+        print("Opción no válida. Seleccione una opción válida (1/2/3/4).")
 
